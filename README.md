@@ -152,7 +152,14 @@ INNER JOIN produto
 ON venda.id_produto = produto.id_produto
 ORDER BY venda.status_venda DESC;
 
+
+16-SELECT cliente.nome_cliente, cliente.email, produto.nome_produto, produto.marca, produto.categoria, venda.forma_pagamento, venda.status_venda
+FROM cliente INNER JOIN venda ON venda.id_cliente = cliente.id_cliente
+INNER JOIN produto ON venda.id_produto = produto.id_produto
+WHERE venda.status_venda = 'Cancelada' OR venda.status_venda = 'Concluída'
+ORDER BY (venda.preco_unitario_venda * venda.quantidade) DESC;
 Principais comandos utilizados
+
 USE: seleciona o banco de dados.
 SELECT: seleciona os dados que serão exibidos.
 FROM: indica a tabela consultada.
